@@ -5,6 +5,9 @@ LAB.fits:
 	gunzip lab.fit.gz
 	mv lab.fit LAB.fits
 
+BL.fits:
+	@echo No easy recipe, manual labor.
+
 # just an example we ran on the GreenBank 40ft when we arrived Jan 5, 2018.
 test1: LAB.fits
 	./hi-observe.py LAB.fits 83.886 -2.67928
