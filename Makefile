@@ -1,5 +1,9 @@
 #
 
+ZFILES = README.md Makefile \
+         hi-observe.py  \
+         LAB.fits BL.fits 
+
 LAB.fits:
 	wget ftp://cdsarc.u-strasbg.fr/pub/cats/VIII/76/lab.fit.gz
 	gunzip lab.fit.gz
@@ -16,3 +20,7 @@ test1: LAB.fits
 test2: BL.fits
 	./hi-observe.py BL.fits 83.886 -2.67928
 	mv hi-observe.png test2.png
+
+
+zip:
+	zip hi-observe.zip $(ZFILES)

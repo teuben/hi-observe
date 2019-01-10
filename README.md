@@ -3,7 +3,8 @@
 Given an RA-DEC-VEL fits cube, a spectrum will be extracted.
 
 Inspired by the way too complicated
-https://teuben.github.io/nemo/man_html/hispectrum.1.html for the GradMap 2018 trip to Greenbank.
+https://teuben.github.io/nemo/man_html/hispectrum.1.html for the GradMap 2018 trip to observe with
+the 40ft radio telescope at Greenbank.
 
 ## Typical usage:
 
@@ -41,3 +42,6 @@ The easiest way to get started is to grab the LAB.fits file, via:
 * deal with RA-DEC cubes, or where VEL/FREQ is not the 3rd axis.
 
 
+## Resources
+
+The original github repo should be at : https://github.com/teuben/hi-observe
