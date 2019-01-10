@@ -1,7 +1,7 @@
 #
 
 ZFILES = README.md Makefile \
-         hi-observe.py  \
+         hi-observe.py  hi-observe.ipynb  \
          LAB.fits BL.fits 
 
 LAB.fits:
