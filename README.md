@@ -8,6 +8,8 @@ the 40ft radio telescope at Greenbank.
 
 ## Typical usage:
 
+### Command line mode:
+
 Picking a specific GLON,GLAT
 
       ./hi-observe.py LAB.fits 45.0 10.0
@@ -19,6 +21,11 @@ Picking a pixel is triggered by negative numbers (note this will be at GLON,GLAT
 Picking an RA and DEC (funny greenbank40ft notation where RA = LST)
 
       ./hi-observe.py LAB.fits 20 58 15   42
+
+### Jupyter notebook mode:
+
+Load the **hi-observe** notebook, set the **fitsfile** and **method** how to set **xpos** and **ypos** and run
+the notebook.
       
 ## Data
 
