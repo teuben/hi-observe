@@ -7,6 +7,7 @@
 #  5-jan-2019   PJT hacking, based on a trimmed cubespectrum3.py, for the GradMap weekend at the 40ft
 #  8-jan-2018   PJT finished documenting, added the coordinate transformation functions
 #                   make it work on BL.fits and LAB.fits, add Makefile for easy bootstrapping
+#  5-jan-2020   PJT sum up signal
 #
 #  Caveats:
 #  - this code still ignores the equinox (B1950, J2000, current)
@@ -95,6 +96,7 @@ else:
     print("Usage: %s fitsfile glon glat"       % sys.argv[0])
     print("       %s fitsfile -xpos -ypos"     % sys.argv[0])
     print("       %s fitsfile rah ram ras dec" % sys.argv[0])
+    print("For an example fitsfile see http://ftp.astro.umd.edu/pub/teuben/BL.fits")
     sys.exit(1)
 
 
@@ -163,6 +165,7 @@ channeln = np.arange(nchan)
 channelf = (channeln-crpix3+1)*cdelt3 + crval3   # WCS in m/s, notice channeln starts at 0
 channelv = channelf / 1000.0                     # convert assumed m/s to km/s
 print("MinMax in velocities:",channelv.min(), channelv.max())
+print("Total flux:",flux.sum()*(channelv[1]-channelv[0]))
 
 #   and finally the figure can be plotted
 plt.figure()
