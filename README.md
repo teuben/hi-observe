@@ -47,6 +47,7 @@ The easiest way to get started is to grab the LAB.fits file, via:
 * Greenbank 40ft mode:  allow extracting at oblique angles in RA-VEL plane
 * deal with cubes where VEL is FREQ
 * deal with RA-DEC cubes, or where VEL/FREQ is not the 3rd axis.
+* add smoothing in Position and/or Velocity
 
 
 ## Resources
