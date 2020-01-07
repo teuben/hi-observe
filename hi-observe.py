@@ -156,7 +156,27 @@ else:
 
 #   now we grab get the spectrum using a numpy slice operation
 #   this will be the Y (intensity) coordinate in the plot
-flux     = d[:,ypos,xpos]
+if True:
+    print("Using single pixel")
+    flux     = d[:,ypos,xpos]
+else:
+    #   if we are using some neighbours.... add them in (this algorithm is for near the Gal plane)
+    b = 2
+    w0 = 1.0
+    w1 = np.exp(-1/(b*b))
+    w2 = w1 * w1
+    f00 = w2*d[:,ypos-1,xpos-1]
+    f01 = w1*d[:,ypos-1,xpos  ]
+    f02 = w2*d[:,ypos-1,xpos+1]
+    f10 = w1*d[:,ypos  ,xpos-1]
+    f11 = w0*d[:,ypos  ,xpos  ]
+    f12 = w1*d[:,ypos  ,xpos+1]
+    f20 = w2*d[:,ypos+1,xpos-1]
+    f21 = w1*d[:,ypos+1,xpos  ]
+    f22 = w2*d[:,ypos+1,xpos+1]
+    print("Using 3x3 pixels with b=%g" % b)
+    flux = (f00+f01+f02+f10+f11+f12+f20+f21+f22)/(w0+4*w1+4*w2)
+    
 
 #   some helper arrays for the X (velocity) coordinate in the plot
 nchan    = d.shape[0]       
