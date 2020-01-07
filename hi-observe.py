@@ -58,6 +58,7 @@ if True:
 
 c        = 299792.458         # speed of light in km/s
 restfreq = 1420.405751786     # HI restfreq in MHz
+vrange   = [-200, 50]
 
 
 #   parse our simple positional command line interface,
@@ -192,6 +193,7 @@ plt.figure()
 
 plt.plot(channelv,flux,'o-',markersize=2,label='HI-spectrum')
 plt.plot(channelv,zero,                  label='baseline')
+plt.xlim(vrange[0], vrange[1])
 plt.xlabel("Doppler Velocity (km/s)")
 plt.ylabel("Brightness")
 plt.title("%s  @ %g %g" % (cmdline,xpos,ypos))
