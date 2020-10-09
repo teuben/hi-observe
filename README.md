@@ -49,6 +49,9 @@ The easiest way to get started is to grab the LAB.fits file, via:
 * deal with RA-DEC cubes, or where VEL/FREQ is not the 3rd axis.
 * add smoothing in Position and/or Velocity
 
+## Example scan
+
+![alt text](Greenbank40ft-scan.jpg  "Example 40ft scan")
 
 ## Resources
 
