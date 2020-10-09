@@ -1,4 +1,4 @@
-![40ft scan](Greenbank40ft-scan.jpg  "Example 40ft scan from our 2018 run")
+![40ft scan](Greenbank40ft-cmp.jpg  "Example 40ft scan from our 2018 run")
 
 # HI observe
 
