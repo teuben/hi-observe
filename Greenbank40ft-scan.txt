@@ -1,0 +1,23 @@
+Some comments transcribed from the scan:
+----------------------------------------
+
+LST 03:00 Dec 59   start IF 1419.8
+Galactic Plain  140deg
+
+1420.08  LST 03:07:02   1420.82 -0.79 err
+
+
+A marker at 1419.8 is just out of view, i need to re-scan it so it's included
+
+Three peaks are marked
+  -11   -4.2241   (not sure if the - is a minus or a mark)
+  +5    14.7845
+  +12   1420.41  3x10^5 (02)   19.0086 if
+
+----
+
+steps are 0.01 MHz ?   -> 10 kHz ~ 2 km/s
+
+each little block is about 2 km/s it seems
+each marker is made every 5 blocks (which is 10 ticks on the metronome)
+
