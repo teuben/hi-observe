@@ -21,3 +21,4 @@ steps are 0.01 MHz ?   -> 10 kHz ~ 2 km/s
 each little block is about 2 km/s it seems
 each marker is made every 5 blocks (which is 10 ticks on the metronome)
 
+-> last marker is not at 1420.08 but 1420.82 , otherwise it doesn't make sense
