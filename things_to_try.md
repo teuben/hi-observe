@@ -4,7 +4,8 @@ These are some questions you can tackle using the
 [Greenbank40ft notebook](https://github.com/teuben/hi-observe/blob/master/greenbank40ft.ipynb).
 
 
-1. For the example spectrum, can you zoom in a bit by looking at the signal near 0 (the baseline).
+1. For the example spectrum in cell [4],
+   can you zoom in a bit by looking at the signal near 0 (the baseline).
 
 2. Compare the spectrum from the LAB and BL (the default) surveys at the same location in the sky.
    What's the most obvious difference?  How could you better compare them.
