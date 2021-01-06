@@ -7,12 +7,14 @@ These are some questions you can tackle using the
 1. For the example spectrum in cell [4],
    can you zoom in a bit by looking at the signal near 0 (the baseline).
 
-2. Compare the spectrum from the LAB and BL (the default) surveys at the same location in the sky.
+2. How does the spectrum NOW look. Use the HI.lst() function in cell [5] to see the LST, and get a new spectrum in cell [6]
+
+3. Compare the spectrum from the LAB and BL (the default) surveys at the same location in the sky.
    What's the most obvious difference?  How could you better compare them.
 
-3. Plot a spectrum at the galactic center:  use the coordinate conversion plot (the last page in https://greenbankobservatory.org/wp-content/uploads/2018/02/40-manual.pdf) and find the RA (LST) and DEC of the galactic center.
+4. Plot a spectrum at the galactic center:  use the coordinate conversion plot (the last page in https://greenbankobservatory.org/wp-content/uploads/2018/02/40-manual.pdf) and find the RA (LST) and DEC of the galactic center.
 
-4. Plot spectra at some selected points in (RA,DEC). Look at the (GLON,GLAT) coordinates and make a table of the peaks and velocities where the peaks occur, e.g. (I'm completely making numbers)
+5. Plot spectra at some selected points in (RA,DEC). Look at the (GLON,GLAT) coordinates and make a table of the peaks and velocities where the peaks occur, e.g. (I'm completely making numbers)
 
     
        # RA h/m/s DEC   GLON GLAT   PEAK  PEAK_LOCATIONS
@@ -26,7 +28,7 @@ These are some questions you can tackle using the
     * pick a series of points perpendicular from the plan (GLON the same)
     * can you find points where there is no HI ?
 
-5. To get help on the "HI" functions, use the jupyter notebook method to get help
+6. To get help on the "HI" functions, use the jupyter notebook method to get help
 
         HI.greenbank40ft?
    or
@@ -34,7 +36,7 @@ These are some questions you can tackle using the
         help(HI.greenbank40ft)
 
 
-6. (advanced) The white insert plot in the strip chart plot was done with the BL
+7. (advanced) The white insert plot in the strip chart plot was done with the BL
 survey, which twice as large a resolution from the Greenbank 40ft
 stripchart data, so it will look more smooth. In fact, it shows two
 peaks, where as the Greenbank data arguably shows three.  If you try
