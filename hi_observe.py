@@ -8,9 +8,13 @@
 #  8-jan-2018   PJT finished documenting, added the coordinate transformation functions
 #                   make it work on BL.fits and LAB.fits, add Makefile for easy bootstrapping
 #  5-jan-2020   PJT sum up signal
+#  6-jan-2021   PJT convert to module for python notebook
 #
 #  Caveats:
 #  - this code still ignores the equinox (B1950, J2000, current)
+
+
+_version = "6-jan-2021  10.35"
 
 
 #  import python modules we need. One per line.
@@ -18,9 +22,12 @@
 import sys, os
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import datetime
 from astropy.io import fits
 from astropy import units as u
 from astropy.coordinates import SkyCoord
+from astropy.time import Time
+from astropy import coordinates as coord
 
 #  define some convenience functions to transform coordinates between RA,DEC <---> GLON,GLAT
 
@@ -46,8 +53,26 @@ def glonlat_radec(glon,glat):
     g = c.icrs.to_string().split()
     return (float(g[0]),float(g[1]))
 
+def lst(location='green bank telescope', date=None):
+    """
+    Return LST at greenbank, at the current time
+    When a date is given, it will use that date,
+    for example
+        date =  '2021-01-06T03:00:00'
+    
+    Greenbank location:  gbloc = ('-80d', '38d')
+    or more accurately:  -79.83131 38.43724 from google maps
+    """
+    myloc = coord.EarthLocation.of_site(location)
+    if date == None:
+        t = Time(datetime.utcnow(), scale='utc', location=myloc)
+    else:
+        t = Time(date, scale='utc', location=myloc)
+    return t.sidereal_time('mean')
+
 
 if True:
+    print("*** hi_observe: version %s ***\n" % _version)
     # testing the conversion functions
     (glon,glat) = radec_glonlat(21,0,0,42)
     (ra,dec)    = glonlat_radec(glon,glat)
