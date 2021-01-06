@@ -15,7 +15,7 @@
 
 #  import python modules we need. One per line.
 
-import sys
+import sys, os
 import numpy as np
 import matplotlib.pyplot as plt
 from astropy.io import fits
@@ -48,23 +48,29 @@ def glonlat_radec(glon,glat):
 
 
 if True:
-    # testing the functions
+    # testing the conversion functions
     (glon,glat) = radec_glonlat(21,0,0,42)
     (ra,dec)    = glonlat_radec(glon,glat)
-    print("test1: radec_glonlat(20,58,15,42) should produce 83.886 -2.67928:   %g %g" % (glon,glat))
-    print("test2: glonlat_radec(glon,glat)   should produce 315 42:            %g %g" % (ra,dec))
+    print("test: radec_glonlat(20,58,15,42) should produce 83.886 -2.67928:   %g %g" % (glon,glat))
+    print("test: glonlat_radec(glon,glat)   should produce 315 42:            %g %g" % (ra,dec))
+    for f in ['BL.fits', 'LAB.fits']:
+        if os.path.exists(f):
+            print("test %-10s: found" % f)
+        else:
+            print("test %-10s: not found" % f)
+            
 
-
-def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits'):
+def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits', debug=False):
 
     c        = 299792.458         # speed of light in km/s
     restfreq = 1420.405751786     # HI restfreq in MHz
-    vrange   = [-200, 50]
+    vrange   = [-200, 50]         # plotting range
 
     
     have_pixel = False    
     (glon,glat) = radec_glonlat(rah,ram,ras,dec)
-    print("GLON/GLAT: %g %g" % (glon,glat))
+    if debug:
+        print("GLON/GLAT: %g %g" % (glon,glat))
     pos=[glon,glat]
     
 
@@ -74,7 +80,8 @@ def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits'):
     # get a reference to the primary header and data.
     h = hdu[0].header
     d = hdu[0].data.squeeze()
-    print("Shape of cube: :",d.shape)
+    if debug:
+        print("Shape of cube: :",d.shape)
     if len(d.shape) != 3:                 # The data better be 3-dim numpy array now
         print("Your cube is not 3D")
         return None
@@ -103,12 +110,15 @@ def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits'):
 
     if have_pixel:
         # already have pixels, no conversion needed
-        print("Pixel: %d %g" % (xpos,ypos))
+        if debug:
+            print("Pixel: %d %g" % (xpos,ypos))
         glon = (xpos-crpix1+1)*cdelt1 + crval1
         glat = (ypos-crpix2+1)*cdelt2 + crval2
-        print("GLON/GLAT: %g %g" % (glon,glat))    
+        if debug:
+            print("GLON/GLAT: %g %g" % (glon,glat))    
         (ra,dec) = glonlat_radec(glon,glat)
-        print("RA/DEC: %g %g" % (ra,dec))
+        if debug:
+            print("RA/DEC: %g %g" % (ra,dec))
     else:
         # need to convert the xpos,ypos (in WCS) to pixel
         #    xpos_wcs = (xpos_pix - crpix + 1) * cdelt + crval
@@ -117,7 +127,8 @@ def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits'):
         yposb = ypos
         xpos = (xposl - crval1)/cdelt1 + crpix1 - 1 
         ypos = (yposb - crval2)/cdelt2 + crpix2 - 1
-        print("Pixel: %g %g (converted from WCS %g %g)" % (xpos,ypos,xposl,yposb))
+        if debug:
+            print("Pixel: %g %g (converted from WCS %g %g)" % (xpos,ypos,xposl,yposb))
         xpos = int(xpos)
         ypos = int(ypos)
     
@@ -125,7 +136,8 @@ def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits'):
     #   now we grab get the spectrum using a numpy slice operation
     #   this will be the Y (intensity) coordinate in the plot
     if True:
-        print("Using single pixel")
+        if debug:
+            print("Using single pixel")
         flux     = d[:,ypos,xpos]
     else:
         #   if we are using some neighbours.... add them in (this algorithm is for near the Gal plane)
@@ -142,7 +154,8 @@ def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits'):
         f20 = w2*d[:,ypos+1,xpos-1]
         f21 = w1*d[:,ypos+1,xpos  ]
         f22 = w2*d[:,ypos+1,xpos+1]
-        print("Using 3x3 pixels with b=%g" % b)
+        if debug:
+            print("Using 3x3 pixels with b=%g" % b)
         flux = (f00+f01+f02+f10+f11+f12+f20+f21+f22)/(w0+4*w1+4*w2)
 
 
@@ -152,8 +165,9 @@ def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits'):
     channeln = np.arange(nchan)
     channelf = (channeln-crpix3+1)*cdelt3 + crval3   # WCS in m/s, notice channeln starts at 0
     channelv = channelf / 1000.0                     # convert assumed m/s to km/s
-    print("MinMax in velocities:",channelv.min(), channelv.max())
-    print("Total flux:",flux.sum()*(channelv[1]-channelv[0]))
+    if debug:
+        print("MinMax in velocities:",channelv.min(), channelv.max())
+        print("Total flux:",flux.sum()*(channelv[1]-channelv[0]))
 
 
     if False:
@@ -174,7 +188,8 @@ def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits'):
 
     #   some statistics
 
-    print("Mean and RMS of %d points: %g %g" % (len(flux),flux.mean(),flux.std()))
+    if debug:
+        print("Mean and RMS of %d points: %g %g" % (len(flux),flux.mean(),flux.std()))
 
 
     return (channelv,flux)
