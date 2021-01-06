@@ -61,6 +61,24 @@ if True:
             
 
 def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits', debug=False):
+    """
+    This function emulates observing with the Greenbank40ft, which
+    is a transit instrument. For this the LST is the RAH:RAM:RAS
+
+    Args:
+       rah      (int) :  RA (or LST) hours
+       ram      (int) :  RA (or LST) minutes
+       ras      (int) :  RA (or LST) seconds
+       dec      (int) :  Declination
+       fitsfile (str) :  survey FITS file (common ones are BL.fits and LAB.fits)
+       debug   (bool) :  turn debug on?
+
+    Returns:
+       (channels,flux)   :  two numpy arrays, the channels are in VLSR (km/s),
+                            the flux is in whatever unit the survey was taken in
+                            (usually K, sometimes Jy/beam)
+     
+    """
 
     c        = 299792.458         # speed of light in km/s
     restfreq = 1420.405751786     # HI restfreq in MHz
