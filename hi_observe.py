@@ -14,7 +14,7 @@
 #  - this code still ignores the equinox (B1950, J2000, current)
 
 
-_version = "6-jan-2021  10.35"
+_version = "6-jan-2021  12.45"
 
 
 #  import python modules we need. One per line.
@@ -59,11 +59,15 @@ def lst(location='green bank telescope', date=None):
     When a date is given, it will use that date,
     for example
         date =  '2021-01-06T03:00:00'
-    
-    Greenbank location:  gbloc = ('-80d', '38d')
+
+    For location we also allow a manual location, e.g.
+    Greenbank location:  location = ('-80d', '38d')
     or more accurately:  -79.83131 38.43724 from google maps
     """
-    myloc = coord.EarthLocation.of_site(location)
+    if type(location) == type(""):
+        myloc = coord.EarthLocation.of_site(location)
+    else:
+        myloc = location
     if date == None:
         t = Time(datetime.utcnow(), scale='utc', location=myloc)
     else:
