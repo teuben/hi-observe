@@ -14,7 +14,7 @@
 #  - this code still ignores the equinox (B1950, J2000, current)
 
 
-_version = "6-jan-2021  12.45"
+_version = "6-jan-2021  13.15"
 
 
 #  import python modules we need. One per line.
