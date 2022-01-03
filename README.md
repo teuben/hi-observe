@@ -56,5 +56,5 @@ The easiest way to get started is to grab the LAB.fits file, via:
 
 * The original github repo should be at : https://github.com/teuben/hi-observe
 * The Greenbank 40ft manual is: https://greenbankobservatory.org/wp-content/uploads/2018/02/40-manual.pdf
-
+* https://github.com/0xCoto/Virgo Virgo: A Versatile Spectrometer for Radio Astronomy
 
