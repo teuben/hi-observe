@@ -8,12 +8,13 @@
 #  8-jan-2018   PJT finished documenting, added the coordinate transformation functions
 #                   make it work on BL.fits and LAB.fits, add Makefile for easy bootstrapping
 #  5-jan-2020   PJT sum up signal
+#  4-jan-2022   PJT some cleanup
 #
 #  Caveats:
 #  - this code still ignores the equinox (B1950, J2000, current)
 
 
-#  import python modules we need. One per line.
+#  import python modules we need. One per line please.
 
 import sys
 import numpy as np
@@ -48,7 +49,7 @@ def glonlat_radec(glon,glat):
 
 
 if True:
-    # testing the functions
+    # testing the coordinate conversion functions
     (glon,glat) = radec_glonlat(21,0,0,42)
     (ra,dec)    = glonlat_radec(glon,glat)
     print("test1: radec_glonlat(20,58,15,42) should produce 83.886 -2.67928:   %g %g" % (glon,glat))
@@ -56,9 +57,13 @@ if True:
 
 #   some constants we might need (but actually not in the current code)
 
-c        = 299792.458         # speed of light in km/s
-restfreq = 1420.405751786     # HI restfreq in MHz
-vrange   = [-200, 50]
+c        = 299792.458         # speed of light           in km/s
+restfreq = 1420.405751786     # restfreq of HI line      in MHz
+vrange   = [-200, 200]        # velocity range to plot   in km/s
+#vrange   = [-200, 50]
+#vrange   = [-30, 30]
+
+noise    = 0.0                # add gaussian noise with this sigma
 
 
 #   parse our simple positional command line interface,
@@ -191,6 +196,9 @@ print("Total flux:",flux.sum()*(channelv[1]-channelv[0]))
 #   and finally the figure can be plotted
 plt.figure()
 
+if noise > 0:
+    flux = flux + np.random.normal(0,noise,len(flux))
+
 plt.plot(channelv,flux,'o-',markersize=2,label='HI-spectrum')
 plt.plot(channelv,zero,                  label='baseline')
 plt.xlim(vrange[0], vrange[1])
@@ -199,26 +207,9 @@ plt.ylabel("Brightness")
 plt.title("%s  @ %g %g" % (cmdline,xpos,ypos))
 
 plt.legend()
-plt.savefig('hi-observe.png')
+plt.savefig('HI-observe.png')
 plt.show()
 
 #   some statistics
 
 print("Mean and RMS of %d points: %g %g" % (len(flux),flux.mean(),flux.std()))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
