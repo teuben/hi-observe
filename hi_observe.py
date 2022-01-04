@@ -82,11 +82,17 @@ if True:
     (ra,dec)    = glonlat_radec(glon,glat)
     print("test: radec_glonlat(20,58,15,42) should produce 83.886 -2.67928:   %g %g" % (glon,glat))
     print("test: glonlat_radec(glon,glat)   should produce 315 42:            %g %g" % (ra,dec))
-    for f in ['BL.fits', 'LAB.fits']:
+    nfound = 0
+    fitsfiles = ['BL.fits', 'LAB.fits']
+    for f in fitsfiles:
         if os.path.exists(f):
             print("test %-10s: found" % f)
+            nfound += 1
         else:
             print("test %-10s: not found" % f)
+            nfound += 1
+    if nfound == 0:
+        print("Warning, no valid data files found")
             
 
 def greenbank40ft(rah,ram,ras,dec, fitsfile='BL.fits', debug=False):
