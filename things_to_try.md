@@ -68,3 +68,4 @@ in that frame, then Frame -> Tile Frame, and compare visually, or blink between 
 
 1. (advanced) The code you see is managed via github.com. You can fork your own version and submit
 your modifications to the original owner (called a Pull Request). See https://github.com/teuben/hi-observe
+You can also update from here in case there were any updates.
