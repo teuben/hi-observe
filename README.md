@@ -58,3 +58,7 @@ The easiest way to get started is to grab the LAB.fits file, via:
 * The Greenbank 40ft manual is: https://greenbankobservatory.org/wp-content/uploads/2018/02/40-manual.pdf
 * https://github.com/0xCoto/Virgo Virgo: A Versatile Spectrometer for Radio Astronomy
 * https://skynet.unc.edu/ Skynet: a robotic telescope network, in which the Greenbank 20m dish takes part
+* Some popular 3D fits viewers:
+  * ds9:  https://sites.google.com/cfa.harvard.edu/saoimageds9
+  * carta: https://cartavis.org/
+  * QFitsView: https://www.mpe.mpg.de/~ott/QFitsView/
