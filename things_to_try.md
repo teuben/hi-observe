@@ -51,9 +51,20 @@ https://github.com/teuben/hi-observe/blob/master/Greenbank40ft-scan.txt
 Learn how to change the contrast so you see more. Learn how to slide through different channels
 in the 3rd dimension.
 
+2. (advanced) You can also plot spectra in for example ds9. This is somewhat involved in ds9, but 
+here it is:   1) Edit -> Region 2) click and highlight a region (defaults to a circle)
+3) Region -> Get Information -> Analysis -> Plot3D. 4) move the selected region around and you
+will see a new spectrum in real time. You can also change the size of the region to simulate
+different size dishes.
+
 2. (advanced) Both the LAB and BL are presented in a GLON-GLAT-VLSR cube, where each VLSR slice
 is a GLON-GLAT image.  There are ways in the viewers to view another slice, for example
 a VLSR-GLON or VLSR-GLAT plot. Hint: in **ds9**: Frame -> Cube -> Axes Order
 
 3. (advanced) In ds9 you can blink between images. Hint: Frame -> New Frame, load an image
 in that frame, then Frame -> Tile Frame, and compare visually, or blink between them.
+
+#  Under the hood: coding
+
+1. (advanced) The code you see is managed via github.com. You can fork your own version and submit
+your modifications to the original owner (called a Pull Request). See https://github.com/teuben/hi-observe
