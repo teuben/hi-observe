@@ -1,0 +1,44 @@
+
+Leiden/Argentine/Bonn Galactic HI Survey
+========================================
+2004-12-09 (final data release)
+
+Reference:  Kalberla et al. (2005) A&A 440, 775
+
+The Dwingeloo 25-m telescope was used for DEC > -27 deg,
+the Villa Elisa 30-m telescope for DEC < -25 deg.
+
+The beam FWHM for the 25-m telescope is 35.7 arcmin,
+the beam FWHM for the 30-m telescope is 30.0 arcmin.
+Regridding was by Gaussian interpolation (18 arcmin),
+leading to the following effective resolution (FWHM):
+40 arcmin for DEC > -27 deg, 35 arcmin for DEC < -25 deg
+37.5 arcmin for -27 < DEC < -25 deg (overlap)
+Note: the grid of 30 arcmin violates Nyquist sampling
+
+
+The reference to Kalberla, P.M.W., Burton, W.B., Hartmann,
+Dap, Arnal, E.M., Bajaja, E., Morras, R., and  P\"oppel, W.G.L.
+(2005) A&A 440, 775 describes the merger of the
+northern (dec > -27) HI survey of Hartmann & Burton (1997)
+made with the Dwingeloo 25-meter telescope with the
+southern (dec < -25) survey of Bajaja et al. (2005)
+made with the IAR 30-meter telescope, as well as refined
+corrections for stray radiation possible because of the
+availability of the all-sky coverage.
+
+Depending on the region of the sky being studied, please
+cite, in addition to the Kalberla et al. (2005) reference,
+also the appropriate source of the material used, namely
+Hartmann & Burton (1997, Cambridge University Press, ISBN 0521471117)
+and/or Arnal et al. (2000), A&AS, 142, 35,
+Bajaja et al. (2005, A&A 440, 767)
+
+Observers were Dap Hartmann and W.B. Burton (Leiden University),
+for the Dwingeloo telescope, and E.M. Arnal, E. Bajaja, J.J. Larrarte,
+R. Morras, & W.G.L. Poeppel (Argentine Institute for Radio Astronomy),
+for the Villa Elisa telescope.
+
+Correction for stray radiation and combination of the data
+by P.M.W. Kalberla (Bonn University).
+
