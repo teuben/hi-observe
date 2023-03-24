@@ -63,3 +63,6 @@ The easiest way to get started is to grab the LAB.fits file, via:
   * ds9:  https://sites.google.com/cfa.harvard.edu/saoimageds9
   * carta: https://cartavis.org/
   * QFitsView: https://www.mpe.mpg.de/~ott/QFitsView/
+* Other projects:
+  * https://physicsopenlab.org/2020/09/08/milky-way-structure-detected-with-the-21-cm-neutral-hydrogen-emission
+  * Jonathan Williams https://github.com/interstellarmedium/HI_telescope
